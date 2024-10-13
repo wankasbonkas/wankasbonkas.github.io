@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tax Calculator</h1>
+
+    <form id="taxForm">
+        <label for="income">Income (x):</label>
+        <input type="number" id="income" placeholder="Enter your income" required>
+
+        <label for="taxPercentage">Tax Percentage (y):</label>
+        <input type="number" id="taxPercentage" placeholder="Enter tax percentage" required>
+
+        <button type="button" onclick="calculateTax()">Calculate Tax</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateTax() {
+            // Get the values of x (income) and y (tax percentage)
+            var x = parseFloat(document.getElementById('income').value);
+            var y = parseFloat(document.getElementById('taxPercentage').value);
+
+            // Check if inputs are valid numbers
+            if (isNaN(x) || isNaN(y)) {
+                alert("Please enter valid numbers for both income and tax percentage.");
+                return;
+            }
+
+            // Calculate the tax
+            var tax = (x * y) / 100;
+
+            // Display the result
+            document.getElementById('result').innerHTML = "The calculated tax is: $" + tax.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
